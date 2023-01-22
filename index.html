@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Lista Tarefas</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Lista de Tarefas</h1>
+    <form class="form">
+      <label for="tarefa">TAREFA:</label>
+      <input type="text" id="tarefa" required>
+      <button type="submit">ADICIONAR</button>
+    </form>
+    <ul></ul>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+      $('.form').on('submit', (e) => {
+        e.preventDefault()
+        $("ul").append(`<li>${$('#tarefa').val()}</li>`);
+        $('#tarefa').val("").focus()
+      });
+
+      $('ul').on('click', () => {
+        $('li').addClass('active')
+      });
+
+    });
+  </script>
+</body>
+
+</html>
