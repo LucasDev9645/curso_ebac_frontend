@@ -1,0 +1,110 @@
+@use "./config/reset.scss";
+@use "./config/variaveis.scss";
+@use "sass:math";
+
+@function pixelEm($alvoPixel, $contextoPixel: 16px) {
+  @return math.div($alvoPixel, $contextoPixel) + em;
+}
+
+body {
+  background-color: variaveis.$corFundo;
+}
+
+.container {
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+header {
+  background-color: variaveis.$corHeader;
+  position: sticky;
+  top: 0;
+  left: 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+  }
+
+  .menu {
+    display: flex;
+  }
+
+  li {
+    margin-left: 24px;
+    font: {
+      weight: bold;
+    }
+  }
+
+  a {
+    color: variaveis.$corTextWhite;
+  }
+}
+
+section {
+  padding: 56px 0;
+
+  h2 {
+    font-size: pixelEm(24px);
+  }
+
+  h4 {
+    font: {
+      size: pixelEm(18px);
+      weight: bold;
+    }
+  }
+
+  .products {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 32.66%);
+    column-gap: 1%;
+    row-gap: 4%;
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 16px;
+  }
+
+  .product-button {
+    display: block;
+    background-color: variaveis.$corButton;
+    color: variaveis.$corTextWhite;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 8px;
+    margin-top: 8px;
+
+    &:hover {
+      background-color: variaveis.$corButonHover;
+    }
+  }
+}
+
+@media screen and (max-width: variaveis.$tablet) {
+  .container {
+    max-width: 80%;
+    .products {
+      column-gap: 3%;
+      grid-template-columns: repeat(2, 48.5%);
+    }
+  }
+}
+
+@media screen and (max-width: variaveis.$mobile) {
+  .container {
+    .products {
+      display: block;
+      .products-item {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
